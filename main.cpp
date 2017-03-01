@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 
+#include <Qt3DLogic/QFrameAction>
+
 #include <Qt3DCore/QEntity>
 #include <Qt3DCore/QTransform>
 
@@ -82,6 +84,11 @@ int main(int argc, char* argv[])
     camController->setCamera(camera);
 
     auto lines = new Qt3DCore::QEntity();
+    auto frameAction = new Qt3DLogic::QFrameAction(lines);
+    QObject::connect(frameAction, &Qt3DLogic::QFrameAction::triggered, [ = ](float dt){
+        qDebug() << "FPS" << 1/dt;
+    });
+
     auto linesTransform = new Qt3DCore::QTransform();
 
     Qt3DRender::QGeometryRenderer *linesMesh = lineObject();

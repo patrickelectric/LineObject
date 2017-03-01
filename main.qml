@@ -2,15 +2,18 @@ import QtQuick 2.0
 import QtQuick.Scene3D 2.0
 
 Item {
+    property var lowFps: 60;
     Text {
-        text: "Click me!"
+        id: textFPS
+        text: ""
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: animation.start()
+        signal fpsReceived(var fps)
+        onFpsReceived: {
+            fps = (fps > 1000) ? 60 : fps
+            lowFps = 0.99*lowFps + 0.01*fps
+            textFPS.text = ("%1 fps").arg(lowFps)
         }
     }
 
@@ -30,7 +33,6 @@ Item {
         id: scene
         anchors.fill: parent
         anchors.margins: 50
-        //color: "darkRed"
 
         transform: Rotation {
             id: sceneRotation
@@ -49,7 +51,10 @@ Item {
             aspects: ["input", "logic"]
             cameraAspectRatioMode: Scene3D.AutomaticAspectRatio
 
-            AnimatedEntity {}
+            AnimatedEntity {
+                id: entity
+                onFpsChanged: textFPS.fpsReceived(fps)
+            }
         }
     }
 }

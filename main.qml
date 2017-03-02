@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Scene3D 2.0
 
 Item {
-    property var lowFps: 60;
+    property var lastFps: 60;
     Text {
         id: textFPS
         text: ""
@@ -11,9 +11,8 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         signal fpsReceived(var fps)
         onFpsReceived: {
-            fps = (fps > 1000) ? 60 : fps
-            lowFps = 0.99*lowFps + 0.01*fps
-            textFPS.text = ("%1 fps").arg(lowFps)
+            lastFps = (Math.abs(fps-lastFps) > 1) ? fps : lastFps
+            textFPS.text = ("%1 fps").arg(Math.round(lastFps))
         }
     }
 

@@ -4,18 +4,13 @@
 
 #include "linemeshgeometry.h"
 
-LineMeshGeometry::LineMeshGeometry(Qt3DCore::QNode *parent)
+LineMeshGeometry::LineMeshGeometry(QVector<QVector3D> vertices, Qt3DCore::QNode *parent)
     : Qt3DRender::QGeometry(parent),
     _positionAttribute(new Qt3DRender::QAttribute(this)),
     _vertexBuffer(new Qt3DRender::QBuffer(Qt3DRender::QBuffer::VertexBuffer, this))
 {
-    _vertices.resize(1e3);
-    const int s = 20;
-    for (auto& v : _vertices) {
-        v.setX(s/2 - rand() % s);
-        v.setY(s/2 - rand() % s);
-        v.setZ(s/2 - rand() % s);
-    }
+    _vertices = vertices;
+
     QByteArray vertexBufferData;
     vertexBufferData.resize(_vertices.size() * 3 * sizeof(float));
     float *rawVertexArray = reinterpret_cast<float *>(vertexBufferData.data());

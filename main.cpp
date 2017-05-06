@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QtQuick/QQuickView>
 
-//#include "linemesh.h"
+#include "linemesh.h"
 #include "gridmesh.h"
 
 int main(int argc, char *argv[])
@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<GridMesh>("GridMesh", 1, 0, "GridMesh");
+    qmlRegisterType<LineMesh>("LineMesh", 1, 0, "LineMesh");
 
     QQuickView view;
     view.setResizeMode(QQuickView::SizeRootObjectToView);

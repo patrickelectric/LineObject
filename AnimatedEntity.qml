@@ -11,6 +11,7 @@ Entity {
     id: sceneRoot
 
     signal fpsChanged(var fps)
+    signal cameraPositionChanged(var position, var upVector, var viewCenter)
 
     Camera {
         id: camera
@@ -57,6 +58,7 @@ Entity {
 
         onTriggered: {
             sceneRoot.fpsChanged(1/dt)
+            sceneRoot.cameraPositionChanged(camera.position, camera.upVector, camera.viewCenter)
         }
     }
 

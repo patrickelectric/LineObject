@@ -20,9 +20,9 @@ Entity {
         aspectRatio: 16/9
         nearPlane : 0.01
         farPlane : 1000.0
-        position: Qt.vector3d( 0.0, 0.0, 10.0 )
-        upVector: Qt.vector3d( 0.0, 1.0, 0.0 )
-        viewCenter: Qt.vector3d( 0.0, 0.0, 0.0 )
+        position: Qt.vector3d( 10, -10, 18.0 )
+        upVector: Qt.vector3d( 0.0, 0.65, 0.65 )
+        viewCenter: Qt.vector3d( 10, 10, 0 )
     }
 
     FirstPersonCameraController { camera: camera }

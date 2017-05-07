@@ -114,7 +114,6 @@ Item {
         }
     }
 
-        // Need to confirm, but it seems that is the same fps for each scene3D
     property var lastFps: [60, 60, 60, 60]
 
     Text {

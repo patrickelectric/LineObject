@@ -29,6 +29,10 @@ Item {
             AnimatedEntity {
                 id: entity
                 onFpsChanged: textFPS.fpsReceived(fps, 0)
+                /*
+                onCameraPositionChanged: {
+                    print("scene3d", position, upVector, viewCenter)
+                }*/
             }
         }
 
@@ -46,6 +50,10 @@ Item {
             AnimatedEntity {
                 id: entity2
                 onFpsChanged: textFPS.fpsReceived(fps, 1)
+                /*
+                onCameraPositionChanged: {
+                    print("scene3d2", position, upVector, viewCenter)
+                }*/
             }
         }
 
@@ -63,6 +71,10 @@ Item {
             AnimatedEntity {
                 id: entity3
                 onFpsChanged: textFPS.fpsReceived(fps, 2)
+                /*
+                onCameraPositionChanged: {
+                    print("scene3d3", position, upVector, viewCenter)
+                }*/
             }
         }
 
@@ -80,6 +92,10 @@ Item {
             AnimatedEntity {
                 id: entity4
                 onFpsChanged: textFPS.fpsReceived(fps, 3)
+                /*
+                onCameraPositionChanged: {
+                    print("scene3d4", position, upVector, viewCenter)
+                }*/
             }
         }
 
@@ -130,8 +146,10 @@ Item {
             for (var i=0; i<4; i++)
                 text = text.arg(lastFps[id])
             textFPS.text = text
+            /*
             print(lastFps[0] == lastFps[1] == lastFps[2] == lastFps[3])
             print(lastFps[0], lastFps[1], lastFps[2], lastFps[3])
+            */
         }
     }
 

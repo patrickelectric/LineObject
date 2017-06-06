@@ -16,9 +16,9 @@ LineMesh::LineMesh(Qt3DCore::QNode *parent)
     vertices.resize(1e3);
     const int s = 20;
     for (auto& v : vertices) {
-        v.setX(s/2 - rand() % s);
-        v.setY(s/2 - rand() % s);
-        v.setZ(s/2 - rand() % s);
+        v.setX(s/4 + rand()%s/2);
+        v.setY(s/4 + rand()%s/2);
+        v.setZ(rand()%s/2);
     }
 
     auto geometry = new LineMeshGeometry(vertices, this);

@@ -1,4 +1,5 @@
 #include <Qt3DRender/QGeometryRenderer>
+#include <QVector4D>
 #include <QVector3D>
 #include <QVector2D>
 
@@ -14,14 +15,14 @@ GridMesh::GridMesh(Qt3DCore::QNode *parent)
     setPrimitiveType(Qt3DRender::QGeometryRenderer::Lines);
 
     QVector2D s(20, 20);
-    QVector<QVector3D> vertices;
+    QList<QVector4D> vertices;
     for (uint i = 0; i <= s.x(); i+=s.x()/20) {
         for (uint j = 0; j <= s.y(); j+=s.y()/20) {
-            vertices.append(QVector3D(i, 0, 0));
-            vertices.append(QVector3D(i, j, 0));
+            vertices.append(QVector4D(i, 0, 0, 0));
+            vertices.append(QVector4D(i, j, 0, 0));
 
-            vertices.append(QVector3D(0, j, 0));
-            vertices.append(QVector3D(i, j, 0));
+            vertices.append(QVector4D(0, j, 0, 0));
+            vertices.append(QVector4D(i, j, 0, 0));
         }
     }
 

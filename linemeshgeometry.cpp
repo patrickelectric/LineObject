@@ -1,24 +1,24 @@
-#include <QVector>
+#include <QList>
 #include <QVector3D>
+#include <QVector4D>
 #include <QtMath>
 
 #include "linemeshgeometry.h"
 
-LineMeshGeometry::LineMeshGeometry(QVector<QVector3D> vertices, Qt3DCore::QNode *parent)
+LineMeshGeometry::LineMeshGeometry(QList<QVector4D> vertices, Qt3DCore::QNode *parent)
     : Qt3DRender::QGeometry(parent),
     _positionAttribute(new Qt3DRender::QAttribute(this)),
     _vertexBuffer(new Qt3DRender::QBuffer(Qt3DRender::QBuffer::VertexBuffer, this))
 {
-    _vertices = vertices;
-
     QByteArray vertexBufferData;
-    vertexBufferData.resize(_vertices.size() * 3 * sizeof(float));
+    vertexBufferData.resize(vertices.size() * 3 * sizeof(float));
     float *rawVertexArray = reinterpret_cast<float *>(vertexBufferData.data());
     int idx = 0;
-    for (const auto& v : _vertices) {
+    for (const auto& v : vertices) {
         rawVertexArray[idx++] = v.x();
         rawVertexArray[idx++] = v.y();
         rawVertexArray[idx++] = v.z();
+        _vertices.append(v.toVector3D());
     }
 
     _vertexBuffer->setData(vertexBufferData);

@@ -15,6 +15,7 @@ Item {
 
             AnimatedEntity {
                 id: entity
+                onFpsChanged: print(fps)
             }
         }
     }

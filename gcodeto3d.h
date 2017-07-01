@@ -66,7 +66,7 @@ public slots:
                 stillSize -= line.size() + 1; // +1 endl
                 float perc = (totalSize -  stillSize)*100.0/totalSize;
                 qDebug() << perc;
-                if(perc - lastPerc > 0.25) {
+                if(perc - lastPerc > 1) {
                     emit percentUpdate((int)perc);
                     lastPerc = perc;
                 }

@@ -7,7 +7,8 @@
 #include "gcodeto3d.h"
 
 LineMesh::LineMesh(Qt3DCore::QNode *parent)
-    : Qt3DRender::QGeometryRenderer(parent)
+    : Qt3DRender::QGeometryRenderer(parent),
+    _lineMeshGeo(nullptr)
 {
     setInstanceCount(1);
     setIndexOffset(0);
@@ -22,9 +23,9 @@ LineMesh::LineMesh(Qt3DCore::QNode *parent)
 
 void LineMesh::posUpdate(QList<QVector4D> pos) {
     _vertices = pos;
-    auto geometry = new LineMeshGeometry(_vertices, this);
-    setVertexCount(geometry->vertexCount());
-    setGeometry(geometry);
+    _lineMeshGeo = new LineMeshGeometry(_vertices, this);
+    setVertexCount(_lineMeshGeo->vertexCount());
+    setGeometry(_lineMeshGeo);
 }
 
 LineMesh::~LineMesh()

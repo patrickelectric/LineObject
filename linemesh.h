@@ -6,6 +6,8 @@
 #include <QVector4D>
 #include <QList>
 
+class LineMeshGeometry;
+
 class LineMesh : public Qt3DRender::QGeometryRenderer
 {
     Q_OBJECT
@@ -15,5 +17,6 @@ public:
 
 private:
     QList<QVector4D> _vertices;
+    LineMeshGeometry *_lineMeshGeo;
 	void posUpdate(QList<QVector4D> pos);
 };

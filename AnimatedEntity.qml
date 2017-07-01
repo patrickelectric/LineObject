@@ -75,6 +75,11 @@ Entity {
         ambient: "darkBlue"
     }
 
+    PhongMaterial {
+        id: lineMaterial
+        ambient: "darkGreen"
+    }
+
     Transform {
         id: lineTransform
     }
@@ -86,7 +91,7 @@ Entity {
 
     Entity {
         id: lineEntity
-        components: [ lineMesh, material, lineTransform ]
+        components: [ lineMesh, lineMaterial, lineTransform ]
     }
 
 }

@@ -14,13 +14,6 @@ LineMesh::LineMesh(Qt3DCore::QNode *parent)
     setFirstInstance(0);
     setPrimitiveType(Qt3DRender::QGeometryRenderer::LineStrip);
 
-    QList<QVector4D> vertices;
-    int total = 1e3;
-    const int s = 20;
-    while (total --> 0) {
-        vertices.append(QVector4D(s/4 + rand()%s/2, s/4 + rand()%s/2, rand()%s/2, 0));
-    }
-
     auto gcode = new GcodeTo3D();
     qRegisterMetaType<QList<QVector4D> >("QList<QVector4D>");
     connect(gcode, &GcodeTo3D::posUpdate, this, &LineMesh::posUpdate);

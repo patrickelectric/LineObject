@@ -31,5 +31,4 @@ void LineMesh::posUpdate(QList<QVector4D> pos) {
 
 LineMesh::~LineMesh()
 {
-    //Qt3DCore::QNode::cleanup();
 }

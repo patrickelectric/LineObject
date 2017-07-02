@@ -29,10 +29,8 @@ void LineMeshPart::posUpdate(QList<QVector4D> pos) {
     _lineMeshGeo = new LineMeshGeometry(_vertices, this);
     setVertexCount(_lineMeshGeo->vertexCount());
     setGeometry(_lineMeshGeo);
-    qDebug() << "MAGIC POTATO !!!!!!!!!!!";
 }
 
 LineMeshPart::~LineMeshPart()
 {
-    //Qt3DCore::QNode::cleanup();
 }

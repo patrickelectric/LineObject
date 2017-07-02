@@ -33,5 +33,4 @@ GridMesh::GridMesh(Qt3DCore::QNode *parent)
 
 GridMesh::~GridMesh()
 {
-    //Qt3DCore::QNode::cleanup();
 }

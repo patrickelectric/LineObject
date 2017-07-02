@@ -65,8 +65,8 @@ public slots:
                 QString line = in.readLine();
                 stillSize -= line.size() + 1; // +1 endl
                 float perc = (totalSize -  stillSize)*100.0/totalSize;
-                qDebug() << perc;
                 if(perc - lastPerc > 1) {
+                    qDebug() << perc;
                     emit percentUpdate((int)perc);
                     lastPerc = perc;
                 }

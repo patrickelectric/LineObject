@@ -21,7 +21,7 @@ void LineMeshPart::start() {
     qRegisterMetaType<QList<QVector4D> >("QList<QVector4D>");
     connect(gcode, &GcodeTo3D::posUpdated, this, &LineMeshPart::posUpdate);
     gcode->enableWait();
-    gcode->read("test2.gcode");
+    gcode->read("../test.gcode");
 }
 
 void LineMeshPart::posUpdate(QList<QVector4D> pos) {

@@ -18,7 +18,7 @@ LineMesh::LineMesh(Qt3DCore::QNode *parent)
     auto gcode = new GcodeTo3D();
     qRegisterMetaType<QList<QVector4D> >("QList<QVector4D>");
     connect(gcode, &GcodeTo3D::posFinished, this, &LineMesh::posUpdate);
-    gcode->read("test2.gcode");
+    gcode->read("../test.gcode");
 }
 
 void LineMesh::posUpdate(QList<QVector4D> pos) {

@@ -96,22 +96,18 @@ Entity {
         ambient: "red"
     }
 
-    Transform {
-        id: lineTransform
-    }
-
     Entity {
         id: gridEntity
-        components: [ gridMesh, material, lineTransform ]
+        components: [ gridMesh, material ]
     }
 
     Entity {
         id: lineEntityPart
-        components: [ lineMeshPart, linePartMaterial, lineTransform ]
+        components: [ lineMeshPart, linePartMaterial ]
     }
 
     Entity {
         id: lineEntity
-        components: [ lineMesh, lineMaterial, lineTransform ]
+        components: [ lineMesh, lineMaterial ]
     }
 }

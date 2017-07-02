@@ -5,16 +5,16 @@
 
 #include "linemeshgeometry.h"
 
-LineMeshGeometry::LineMeshGeometry(QList<QVector4D> vertices, Qt3DCore::QNode *parent)
-    : Qt3DRender::QGeometry(parent),
-    _positionAttribute(new Qt3DRender::QAttribute(this)),
-    _vertexBuffer(new Qt3DRender::QBuffer(Qt3DRender::QBuffer::VertexBuffer, this))
+LineMeshGeometry::LineMeshGeometry(QList<QVector4D> vertices, Qt3DCore::QNode *parent) :
+    Qt3DRender::QGeometry(parent)
+    , _positionAttribute(new Qt3DRender::QAttribute(this))
+    , _vertexBuffer(new Qt3DRender::QBuffer(Qt3DRender::QBuffer::VertexBuffer, this))
 {
     QByteArray vertexBufferData;
     vertexBufferData.resize(vertices.size() * 3 * sizeof(float));
     float *rawVertexArray = reinterpret_cast<float *>(vertexBufferData.data());
     int idx = 0;
-    for (const auto& v : vertices) {
+    for (const auto &v : vertices) {
         rawVertexArray[idx++] = v.x();
         rawVertexArray[idx++] = v.y();
         rawVertexArray[idx++] = v.z();

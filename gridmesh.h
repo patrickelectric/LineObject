@@ -8,6 +8,6 @@ class GridMesh : public Qt3DRender::QGeometryRenderer
 {
     Q_OBJECT
 public:
-    explicit GridMesh(Qt3DCore::QNode* parent = Q_NULLPTR);
+    explicit GridMesh(Qt3DCore::QNode *parent = Q_NULLPTR);
     ~GridMesh();
 };

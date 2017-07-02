@@ -27,9 +27,9 @@ void GcodeTo3D::read(QString url)
     auto fileLoader = new FileLoader(QUrl(url).path());
     fileLoader->enableWait(_wait);
     fileLoader->moveToThread(thread);
-    connect(fileLoader, &FileLoader::percentUpdate ,this, &GcodeTo3D::percentUpdate);
-    connect(fileLoader, &FileLoader::posFinished ,this, &GcodeTo3D::posFinished);
-    connect(fileLoader, &FileLoader::posUpdated ,this, &GcodeTo3D::posUpdated);
+    connect(fileLoader, &FileLoader::percentUpdate, this, &GcodeTo3D::percentUpdate);
+    connect(fileLoader, &FileLoader::posFinished, this, &GcodeTo3D::posFinished);
+    connect(fileLoader, &FileLoader::posUpdated, this, &GcodeTo3D::posUpdated);
     connect(thread, &QThread::started, fileLoader, &FileLoader::run);
     thread->start();
 }

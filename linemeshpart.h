@@ -12,7 +12,7 @@ class LineMeshPart : public Qt3DRender::QGeometryRenderer
 {
     Q_OBJECT
 public:
-    explicit LineMeshPart(Qt3DCore::QNode* parent = Q_NULLPTR);
+    explicit LineMeshPart(Qt3DCore::QNode *parent = Q_NULLPTR);
     ~LineMeshPart();
     Q_INVOKABLE void start();
 

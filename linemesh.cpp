@@ -8,7 +8,7 @@
 
 LineMesh::LineMesh(Qt3DCore::QNode *parent)
     : Qt3DRender::QGeometryRenderer(parent),
-    _lineMeshGeo(nullptr)
+      _lineMeshGeo(nullptr)
 {
     setInstanceCount(1);
     setIndexOffset(0);
@@ -21,7 +21,8 @@ LineMesh::LineMesh(Qt3DCore::QNode *parent)
     gcode->read("../test.gcode");
 }
 
-void LineMesh::posUpdate(QList<QVector4D> pos) {
+void LineMesh::posUpdate(QList<QVector4D> pos)
+{
     _vertices = pos;
     _lineMeshGeo = new LineMeshGeometry(_vertices, this);
     setVertexCount(_lineMeshGeo->vertexCount());

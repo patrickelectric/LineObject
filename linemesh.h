@@ -12,7 +12,7 @@ class LineMesh : public Qt3DRender::QGeometryRenderer
 {
     Q_OBJECT
 public:
-    explicit LineMesh(Qt3DCore::QNode* parent = Q_NULLPTR);
+    explicit LineMesh(Qt3DCore::QNode *parent = Q_NULLPTR);
     ~LineMesh();
     void posUpdate(QList<QVector4D> pos);
 

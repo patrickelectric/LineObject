@@ -6,6 +6,7 @@ import Qt3D.Extras 2.0
 import Qt3D.Logic 2.0
 import GridMesh 1.0
 import LineMesh 1.0
+import LineMeshPart 1.0
 
 Entity {
     id: sceneRoot
@@ -68,6 +69,16 @@ Entity {
     LineMesh {
         id: lineMesh
         enabled: true
+        // We do that to "fake" a real start
+        // Only start to draw the red lines when the other object is done
+        onFinished: {
+            lineMeshPart.start()
+        }
+    }
+
+    LineMeshPart {
+        id: lineMeshPart
+        enabled: true
     }
 
     PhongMaterial {
@@ -80,6 +91,11 @@ Entity {
         ambient: "darkGreen"
     }
 
+    PhongMaterial {
+        id: linePartMaterial
+        ambient: "red"
+    }
+
     Transform {
         id: lineTransform
     }
@@ -90,8 +106,12 @@ Entity {
     }
 
     Entity {
+        id: lineEntityPart
+        components: [ lineMeshPart, linePartMaterial, lineTransform ]
+    }
+
+    Entity {
         id: lineEntity
         components: [ lineMesh, lineMaterial, lineTransform ]
     }
-
 }

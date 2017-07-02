@@ -7,6 +7,8 @@
 #include <QFile>
 #include <cmath>
 #include <QDebug>
+#include <QTest>
+
 class GcodeTo3D : public QObject
 {
     Q_OBJECT
@@ -17,13 +19,16 @@ public:
 
 public:
     void read(QString url);
+    void enableWait();
 
 signals:
     void percentUpdate(QVariant percent);
-    void posUpdate(QList<QVector4D> pos);
+    void posFinished(QList<QVector4D> pos);
+    void posUpdated(QList<QVector4D> pos);
 
 private:
     QThread *thread;
+    bool _wait;
 };
 
 class FileLoader : public QObject
@@ -33,9 +38,15 @@ class FileLoader : public QObject
 public:
     FileLoader(QString fileName, QObject *parent = nullptr):
         QObject(parent),
-        file(new QFile(fileName))
+        file(new QFile(fileName)),
+        _wait(false)
     {
-    };
+    }
+
+    void enableWait(bool wait)
+    {
+        _wait = wait;
+    }
 
     ~FileLoader()
     {
@@ -43,10 +54,12 @@ public:
 
 private:
     QFile* file;
+    bool _wait;
 
 signals:
     void percentUpdate(QVariant var);
     void posFinished(QList<QVector4D> pos);
+    void posUpdated(QList<QVector4D> pos);
 
 public slots:
     void run()
@@ -120,6 +133,10 @@ public slots:
                         }
 
                         pos.append(ActualPos);
+                        if(pos.size() > 1 && _wait) {
+                            QTest::qWait(40);
+                            emit posUpdated(pos);
+                        }
                     }
                 }
             }

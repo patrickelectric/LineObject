@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>AnimatedEntity.qml</file>
         <file>main.qml</file>
+        <file>WireframeMaterial.qml</file>
     </qresource>
 </RCC>
